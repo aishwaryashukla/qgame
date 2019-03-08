@@ -1,0 +1,90 @@
+
+
+@font-face{
+font-family:'AvenirNextRegular';
+src:url('static/font/AvenirNextLTW01-Regular.eot'),
+url('static/font/AvenirNextLTW01-Regular.woff') format('woff'),
+url('static/font/AvenirNextLTW01-Regular.woff2') format('woff2'),
+url('static/font/AvenirNextLTW01-Regular.ttf') format('truetype');
+font-weight:normal;
+font-style:normal}
+
+@font-face{font-family:'AvenirNextLight';
+src:url('static/font/AvenirNextLTW01-Light.eot'),
+url('static/font/AvenirNextLTW01-Light.woff') format('woff'),
+url('static/font/AvenirNextLTW01-Light.woff2') format('woff2'),
+url('static/font/AvenirNextLTW01-Light.ttf') format('truetype');
+font-weight:normal;
+font-style:normal}
+
+
+body {
+    font-family:AvenirNextRegular, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,sans-serif;
+    height:100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family:AvenirNextRegular, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,sans-serif;
+
+}
+
+div{
+    border:1px solid white;
+}
+
+.headerComponent{
+	/*padding:10px;
+	padding-top: :0px;*/
+}
+
+#generatePDF{
+	float:right;
+}
+
+.ui-datepicker-calendar {
+	display: none;
+}
+
+#heading{
+}
+
+button{
+	background-color:#073586 !important;
+	border-color:#073586 !important;
+
+}
+
+
+
+.banner_ae h1{
+    font-family: AvenirNextLight;
+       color:#073586;
+
+}
+.select_label {
+    color: rgb(0, 147, 189);
+    text-align: right;
+    margin-bottom: 0px;
+    font-weight: 500;
+}
+
+.select_box{
+	border-color: rgb(0,106,180);
+    color: rgb(0,106,180);
+    border-radius: 4px;
+}
+
+#wc_head{
+	    color: #333333;
+    font-size: 18px;
+    fill: #333333;
+    text-align:center;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
