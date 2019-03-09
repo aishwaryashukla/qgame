@@ -1,14 +1,12 @@
 from flask import Flask,render_template,json,redirect,url_for,session, escape, request
-import functions as fn
+
 app = Flask(__name__)
 import os
 import logging
 import pandas as pd
 import datetime
 from flask import Flask, jsonify
-from flale import start_heartbeat, url_prefix_middleware
-from blkcore.util import init_logging
-from blkdbi.dataobject import DataObject
+
 from flask import Flask,render_template,request,json,redirect,url_for
 import csv
 from sqlalchemy import create_engine, desc
@@ -16,11 +14,16 @@ from sqlalchemy.orm import sessionmaker
 from models.pandas import Base, Questions, UserStatus, Department, Track, TrackNomination, Team, TeamParticipant, TeamScore
 import models.pandas as sqlm
 import numpy as np
+def read_csv_convert_json(filepath):
+	data=pd.read_csv(filepath)
+	data.fillna(value=np.nan, inplace=True)
+	data=json.loads(data.to_json(orient='records'))
+	return data
 
 completed_ratio_path='static/data/completedRatioChart.csv'
-comp_vs_create_data=fn.read_csv_convert_json(completed_ratio_path)
+# comp_vs_create_data=read_csv_convert_json(completed_ratio_path)
 #print comp_vs_create_data
-DEV_PORT = 59999
+# DEV_PORT = 59999
 BLL_DB = 'examples7.db'
 
 PAGPUZZLE_DB = 'pagpuzzle3.db'
@@ -36,6 +39,7 @@ def add_header(response):
 @app.route('/')
 def home():
     currentDT = datetime.datetime.now()
+    my_home = url_for('home', _external=True)
     if 'username' in session:
         username = session['username']
         return 'Logged in as ' + username + '<br>' + \
@@ -44,9 +48,9 @@ def home():
 
 
     return "You are not logged in <br><a href = '/login'></b>" + \
-       "click here to log in</b></a>"
+       "click here to log in</b></a>" +\
+        " home = {}".format(my_home)
 
-    return 'Hello Aishwarya! You are at home page' +(str(currentDT))
 
 @app.route('/input',  methods=["GET"])
 def input():
@@ -681,5 +685,5 @@ if __name__ == "__main__":
 
     app.secret_key = 'sec'
     # The 0.0.0.0 means accept requests on all network interfaces
-    app.run(host=os.getenv('HOST', '0.0.0.0'), port=os.getenv('PORT', DEV_PORT),debug=True)
+    app.run(host=os.getenv('HOST', '0.0.0.0'),debug=True)
     print("Click http://hkgmd1250276:59999/login to start")
