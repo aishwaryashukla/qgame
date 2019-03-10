@@ -60,7 +60,8 @@ def input():
 # this fuction will allow users to enter login details
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    my_home = url_for('home', _external=True)
+    return render_template('login.html',home_url = my_home)
 
 @app.route('/leaderBoard')
 def test_me():

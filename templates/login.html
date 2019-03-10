@@ -9,7 +9,8 @@
     <div class="container">
       <h1>Please login</h1>
       <br>
-      <form action="http://hkgmd1250276:59999/login-validate" method="post">
+      <form action="{{ home_url}}login-validate" method="post">
+        <h1> {{ heading }} </h1>
         <input type="text" placeholder="Username" name="username" value="{{
           request.form.username }}">
          <input type="password" placeholder="Password" name="password" value="{{
@@ -17,7 +18,7 @@
         <input class="btn btn-default" type="submit" value="Login">
       </form>
 
-      <form action="http://hkgmd1250276:59999/register" method="post">
+      <form action="{{ home_url}}register" method="post">
 
         <input class="btn btn-default" type="submit" value="Register">
       </form>
