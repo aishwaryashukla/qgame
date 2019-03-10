@@ -1,6 +1,7 @@
 from flask import Flask,render_template,json,redirect,url_for,session, escape, request
 
 app = Flask(__name__)
+app.secret_key = 'sec'
 import os
 import logging
 import pandas as pd
@@ -684,7 +685,7 @@ if __name__ == "__main__":
     db_session.close()
     engine.dispose()
 
-    app.secret_key = 'sec'
+
     # The 0.0.0.0 means accept requests on all network interfaces
     app.run(host=os.getenv('HOST', '0.0.0.0'),debug=True)
     print("Click http://hkgmd1250276:59999/login to start")
