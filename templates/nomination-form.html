@@ -84,7 +84,7 @@
 
 						
 
-				      <form action = "http://hkgmd1250276:59999/save-nomination" method = "POST">
+				      <form action = "{{ home_url }}save-nomination" method = "POST">
 						 <p>Name <input type = "text" name = "Name" /></p>
 						 <p>EmailID <input type = "text" name = "email" /></p>
 						  <p>Department <input type ="text" name = "dept" /></p>
@@ -96,7 +96,7 @@
          				<p><input type = "submit" value = "Nominate" /></p>
      					 </form>
 
-						<form action = "http://hkgmd1250276:59999/show-nominations" method = "GET">
+						<form action = "{{ home_url }}show-nominations" method = "GET">
 							<p><input type = "submit" value = "Show Nominations" /></p>
      					 </form>
 

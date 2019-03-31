@@ -9,7 +9,7 @@
     <div class="container">
 
       <br>
-      <form action="http://hkgmd1250276:59999/quest" method="post">
+      <form action="{{ home_url }}quest" method="post">
         <img src="static/img/questions.png" class="center" width="500" height="600"><br> <br>
         <input type="text" name=ans class="center" value="{{
           request.form.username }}"><br>
@@ -26,6 +26,6 @@
       {% endif %}
     </div>
     <h6 style="font-size:15px;" align="right"> Leadership Board</h6>
-<iframe src="http://hkgmd1250276:59999/leaderBoard" height="300" width="500" align="right" style="border:2px solid blue;"></iframe></td>
+<iframe src="{{ home_url }}leaderBoard" height="300" width="500" align="right" style="border:2px solid blue;"></iframe></td>
   </body>
 </html>

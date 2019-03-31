@@ -184,6 +184,7 @@ def login_validate():
 
 @app.route('/quest',methods = ['POST', 'GET'])
 def quest():
+    my_home = url_for('home', _external=True)
     msg = "You have logged in as {} ".format(session['username'])
     engine = create_engine('sqlite:///%s' % PAGPUZZLE_DB)
 
@@ -203,23 +204,23 @@ def quest():
                 sqlm.addUserStatus(db_session,user_session,q_id,q_id)
                 db_session.commit()
                 db_session.close()
-                return render_template('Q2.html')
+                return render_template('Q2.html',home_url = my_home)
             else:
                 print("Calling get")
                 correct_ans = sqlm.getAnswer(db_session, q_id)
                 if correct_ans == ans :
                     sqlm.updateUserStatus(db_session, user_session, q_id, q_id)
                     db_session.close()
-                    return render_template('Q%s.html'%str(int(q_id)+1))
+                    return render_template('Q%s.html'%str(int(q_id)+1),home_url = my_home)
                 else :
                     print("Someting went wrong, Check user:{} q_id:{} , level:{}"\
                           .format(user_session, q_id, q_id))
-                    return render_template('Q%s.html' % str(int(q_id)))
+                    return render_template('Q%s.html' % str(int(q_id)), home_url = my_home)
 
 
     else :
         db_session.close()
-        return render_template('Q1.html')
+        return render_template('Q1.html', home_url = my_home)
     return msg
 
 
@@ -237,7 +238,7 @@ def ShowUsers(user: str):
                     <html>
                     <body>
                """ + userDetails.to_html() + """
-                    <form action = "http://hkgmd1250276:59999/allocation-form" method = "GET">
+                    <form action = "{{ home_url }}allocation-form" method = "GET">
              				<p><input type = "submit" value = "Allocate Teams" /></p>
          					 </form>          
                     </body>
@@ -314,7 +315,7 @@ def input_form():
                   <h1>Topic is: {}</h1>
                   <h1>Score is: {}</h1>
                   <h1>Track is: {}</h1>
-                  <h1>Team is: {}</h1> <a href="http://hkgmd1250276:59999/leadership">Leadership Board</a> '''.format(add_msg(empId), empName, empTopic,empScore,empTrack, empTeam)
+                  <h1>Team is: {}</h1> <a href="{{ home_url }}leadership">Leadership Board</a> '''.format(add_msg(empId), empName, empTopic,empScore,empTrack, empTeam)
 
     return '''<form method="POST">
                   emp_id: <input type="text" name="empId"><br>
@@ -374,7 +375,7 @@ def showNomination():
                 <html>
                 <body>
            """ + nominations.to_html() +"""
-                <form action = "http://hkgmd1250276:59999/allocation-form" method = "GET">
+                <form action = "{{ home_url }}allocation-form" method = "GET">
          				<p><input type = "submit" value = "Allocate Teams" /></p>
      					 </form>          
                 </body>
@@ -399,7 +400,7 @@ def showParticipants():
                 <html>
                 <body>
            """ + participants.to_html() +"""
-                <form action = "http://hkgmd1250276:59999/input" method = "GET">
+                <form action = "{{ home_url }}input" method = "GET">
          				<p><input type = "submit" value = "Mark Course Completion" /></p>
      					 </form>          
                 </body>
@@ -440,7 +441,7 @@ def allocateTeams():
                 <html>
                 <body>
            """ + participants.to_html() +"""
-                <form action = "http://hkgmd1250276:59999/input" method = "GET">
+                <form action = "{{ home_url }}input" method = "GET">
          				<p><input type = "submit" value = "Submit scores" /></p>
      					 </form>          
                 </body>
@@ -515,7 +516,7 @@ def saveNomination():
                 <html>
                 <body>
            """ + nominations.to_html() +"""
-                <form action = "http://hkgmd1250276:59999/allocation-form" method = "GET">
+                <form action = "{{ home_url }}allocation-form" method = "GET">
          				<p><input type = "submit" value = "Allocate Teams" /></p>
      					 </form>          
                 </body>
@@ -688,4 +689,4 @@ if __name__ == "__main__":
 
     # The 0.0.0.0 means accept requests on all network interfaces
     app.run(host=os.getenv('HOST', '0.0.0.0'),debug=True)
-    print("Click http://hkgmd1250276:59999/login to start")
+    print("Click {{ home_url }}login to start")

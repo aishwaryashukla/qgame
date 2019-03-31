@@ -84,7 +84,7 @@
 
 						
 
-				      <form action = "http://hkgmd1250276:59999/result1" method = "POST">
+				      <form action = "{{ home_url }}result1" method = "POST">
 						 <p>EmailID <input type = "text" name = "email" /></p>
 						 <p>Team Name <input type = "text" name = "team" /></p>
 						  <p>Track <input type ="text" name = "track" /></p>
@@ -93,7 +93,7 @@
 						  <p>Certificate Path <input type ="text" name = "certificate" /></p>
          				<p><input type = "submit" value = "submit" /></p>
      					 </form>
-					  <form action = "http://hkgmd1250276:59999/show-participants" method = "GET">
+					  <form action = "{{ home_url }}show-participants" method = "GET">
 						  <input type = "submit" value = "Show Participants" />
 					  </form>
 

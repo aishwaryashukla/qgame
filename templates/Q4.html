@@ -9,7 +9,7 @@
     <div class="container">
       <h1>what is 8 + 4</h1>
       <br>
-      <form action="http://hkgmd1250276:59999/quest" method="post">
+      <form action="{{ home_url }}quest" method="post">
         <input type="text" name="ans" value="{{
           request.form.username }}">
          <input type="hidden" id="q_id" name="q_id" value="4">
@@ -23,6 +23,6 @@
       {% endif %}
     </div>
   <td><h3 style="font-size:48px;"> Leadership Board</h3>
-<iframe src="http://hkgmd1250276:59999/leaderBoard" height="300" width="500" style="border:2px solid blue;"></iframe></td>
+<iframe src="{{ home_url }}leaderBoard" height="300" width="500" style="border:2px solid blue;"></iframe></td>
   </body>
 </html>

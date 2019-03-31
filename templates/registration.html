@@ -13,7 +13,7 @@
     <div class="container">
       <h1>Please Register yourself</h1>
       <br>
-      <form action="http://hkgmd1250276:59999/login-validate" method="post">
+      <form action="{{ home_url }}login-validate" method="post">
         <input type="text" placeholder="Username" name="username" value="{{
           request.form.username }}">
          <input type="password" placeholder="Password" name="password" value="{{
