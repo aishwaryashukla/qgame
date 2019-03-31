@@ -9,8 +9,8 @@ from flask import Flask,render_template,request,json,redirect,url_for
 import csv
 from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker
-from models.pandas import Base, Questions, UserStatus, Department, Track, TrackNomination, Team, TeamParticipant, TeamScore
-import models.pandas as sqlm
+from models.dataStructure import Base, Questions, UserStatus, Department, Track, TrackNomination, Team, TeamParticipant, TeamScore
+import models.dataStructure as sqlm
 import numpy as np
 
 class MyTestCase(unittest.TestCase):
