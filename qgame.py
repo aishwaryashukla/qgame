@@ -64,6 +64,17 @@ def login():
     my_home = url_for('home', _external=True)
     return render_template('login.html',home_url = my_home)
 
+
+
+# this fuction will allow users to enter login details
+@app.route('/index')
+def index():
+    my_home = url_for('home', _external=True)
+    return render_template('index.html', home_url = my_home)
+
+
+
+
 @app.route('/leaderBoard')
 def test_me():
     engine = create_engine('sqlite:///pagpuzzle3.db')
