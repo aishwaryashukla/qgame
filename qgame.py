@@ -122,6 +122,9 @@ def login_validate():
 
         username = request.form["username"]
         password = request.form["password"]
+        username = str(username).strip()
+        if(len(username) <= 0):
+            return redirect(url_for('login'))
         session['username'] = username
     engine = create_engine('sqlite:///%s' % PAGPUZZLE_DB)
 
